@@ -19,3 +19,8 @@ auto MagnumFont::doOpenData(const Containers::ArrayView<const char> data, const 
     }
 
 //here
+    if(conf.value<UnsignedInt>("version") != 1) {
+        Error() << "Text::MagnumFont::openData(): unsupported file version, expected 1 but got"
+                << conf.value<UnsignedInt>("version");
+        return {};
+    }
